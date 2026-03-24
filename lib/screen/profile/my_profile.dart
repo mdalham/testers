@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide AuthProvider;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../controllers/app_routes.dart';
-import '../../controllers/height_width.dart';
-import '../../service/provider/auth_provider.dart';
-import '../../widget/list tile/app_card.dart';
-import '../installizer/animated_drawer.dart';
+import 'package:testers/constants/app_routes.dart';
+import 'package:testers/utils/height_width.dart';
+import 'package:testers/screen/auth/provider/auth_provider.dart';
+import 'package:testers/widgets/list tile/app_card.dart';
+import 'package:testers/screen/auth/animated_drawer.dart';
 
 class MyProfile extends StatelessWidget {
   const MyProfile({super.key});
@@ -49,7 +49,7 @@ class _ProfileBodyState extends State<_ProfileBody>
 
   @override
   Widget build(BuildContext context) {
-    final uid = context.read<AuthProvider>().uid; // ✅ read, not watch
+    final uid = context.read<AuthProvider>().uid; 
     return Column(
       children: [
         _ProfileHeader(uid: uid),
@@ -191,7 +191,7 @@ class _ProfileAvatar extends StatelessWidget {
       padding: const EdgeInsets.all(2.5),
       decoration: BoxDecoration(
         shape:  BoxShape.circle,
-        border: Border.all(color: cs.outline, width: 1.5), // ✅ fixed
+        border: Border.all(color: cs.outline, width: 1.5), 
       ),
       child: CircleAvatar(
         radius:          36,
@@ -301,7 +301,7 @@ class _MyApplicationsTab extends StatelessWidget {
     if (uid == null) return const _EmptyTab(message: 'Not signed in.');
 
     return StreamBuilder<QuerySnapshot>(
-      key:    ValueKey(uid), // ✅ stable key
+      key:    ValueKey(uid), 
       stream: FirebaseFirestore.instance
           .collection('apps')
           .where('ownerUid', isEqualTo: uid)
@@ -387,7 +387,7 @@ class _TestHistoryTabState extends State<_TestHistoryTab> {
   @override
   void didUpdateWidget(_TestHistoryTab oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // ✅ only rebuild stream if uid actually changed
+    
     if (oldWidget.uid != widget.uid && widget.uid != null) {
       _stream = _buildCombinedStream(widget.uid!);
     }

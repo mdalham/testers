@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:testers/widget/snackbar/custom_snackbar.dart';
+import 'package:testers/widgets/snackbar/custom_snackbar.dart';
 
-import '../../controllers/icons.dart';
-import '../../widget/internet/internet_banner.dart';
+import 'package:testers/constants/icons.dart';
+import 'package:testers/widgets/internet/internet_banner.dart';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Coin package model
-// ─────────────────────────────────────────────────────────────────────────────
+
+
+
 
 class _CoinPackage {
   const _CoinPackage({
@@ -22,9 +22,9 @@ class _CoinPackage {
   final bool isBestValue;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// BuyCoinTab
-// ─────────────────────────────────────────────────────────────────────────────
+
+
+
 
 class BuyCoinTab extends StatelessWidget {
   const BuyCoinTab({super.key});
@@ -46,13 +46,13 @@ class BuyCoinTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: const EdgeInsets.symmetric(vertical: 16),
-      itemCount: _packages.length + 2, // +2 for Header and Footer
+      itemCount: _packages.length + 2, 
       separatorBuilder: (context, index) => const SizedBox(height: 12),
       itemBuilder: (context, index) {
 
         const InternetBanner();
 
-        // 1. Header Section
+        
         if (index == 0) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 8),
@@ -66,7 +66,7 @@ class BuyCoinTab extends StatelessWidget {
           );
         }
 
-        // 2. Footer Section (Security Note)
+        
         if (index == _packages.length + 1) {
           return Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 10),
@@ -90,7 +90,7 @@ class BuyCoinTab extends StatelessWidget {
           );
         }
 
-        // 3. The Package List Item
+        
         final pkg = _packages[index - 1];
         return _PackageCard(pkg: pkg);
       },
@@ -108,7 +108,7 @@ class _PackageCard extends StatelessWidget {
     final cs = theme.colorScheme;
     final isHighlight = pkg.isBestValue;
 
-    // Brand Colors
+    
     const orange = Color(0xFFFF9800);
     const blue = Color(0xFF1565C0);
     final Color accent = isHighlight ? blue : orange;
@@ -127,7 +127,7 @@ class _PackageCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Left: Icon Container
+            
             Container(
               width: 56,
               height: 56,
@@ -180,7 +180,7 @@ class _PackageCard extends StatelessWidget {
               ),
             ),
 
-            // Right: Price Button
+            
             ElevatedButton(
               onPressed: () => _onBuy(context),
               style: ElevatedButton.styleFrom(

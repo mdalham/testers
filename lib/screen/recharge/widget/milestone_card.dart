@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../controllers/icons.dart';
+import 'package:testers/constants/icons.dart';
 
 class MilestoneCard extends StatefulWidget {
   final String title;
@@ -60,7 +60,7 @@ class _MilestoneCardState extends State<MilestoneCard>
     final ColorScheme cs = Theme.of(context).colorScheme;
     final TextTheme tt = Theme.of(context).textTheme;
 
-    // Accent colour switches when completed
+    
     final Color accent = widget.isCompleted
         ? const Color(0xFF4CAF50)
         : const Color(0xFF6C63FF);
@@ -91,12 +91,12 @@ class _MilestoneCardState extends State<MilestoneCard>
         padding: const EdgeInsets.all(10),
         child: Row(
           children: [
-            // ── Left ─────────────────────────────────────────────────────────
+            
             Expanded(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Coin icon container
+                  
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -109,12 +109,12 @@ class _MilestoneCardState extends State<MilestoneCard>
 
                   const SizedBox(width: 10),
 
-                  // Title + reward + optional progress chip
+                  
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Title
+                        
                         Text(
                           widget.title,
                           style: tt.titleSmall?.copyWith(
@@ -124,7 +124,7 @@ class _MilestoneCardState extends State<MilestoneCard>
 
                         const SizedBox(height: 2),
 
-                        // Reward + progress chip row
+                        
                         Row(
                           children: [
                             Text(
@@ -145,10 +145,10 @@ class _MilestoneCardState extends State<MilestoneCard>
 
             const SizedBox(width: 10),
 
-            // ── Right: action button ─────────────────────────────────────────
+            
             Row(
               children: [
-                // Progress chip — only for multi-ad milestones
+                
                 if (showProgress) ...[
                   _ProgressChip(
                     current: widget.isCompleted
@@ -169,10 +169,10 @@ class _MilestoneCardState extends State<MilestoneCard>
     );
   }
 
-  // ── Button states ─────────────────────────────────────────────────────────
+  
 
   Widget _buildActionButton(ColorScheme cs) {
-    // 1. Completed
+    
     if (widget.isCompleted) {
       return _ActionChip(
         backgroundColor: const Color(0xFF4CAF50).withOpacity(0.15),
@@ -195,7 +195,7 @@ class _MilestoneCardState extends State<MilestoneCard>
       );
     }
 
-    // 2. Ad loading / playing
+    
     if (widget.isAdPending) {
       return _ActionChip(
         backgroundColor: const Color(0xFF6C63FF).withOpacity(0.12),
@@ -225,7 +225,7 @@ class _MilestoneCardState extends State<MilestoneCard>
       );
     }
 
-    // 3. Cooldown countdown
+    
     if (widget.isCooldownActive) {
       return _ActionChip(
         backgroundColor: cs.surfaceContainerHighest.withOpacity(0.5),
@@ -252,7 +252,7 @@ class _MilestoneCardState extends State<MilestoneCard>
       );
     }
 
-    // 4. Ready — pulsing Watch button
+    
     return GestureDetector(
       onTap: widget.onWatchAd,
       child: _ActionChip(
@@ -284,9 +284,9 @@ class _MilestoneCardState extends State<MilestoneCard>
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// _ActionChip — reusable pill container for all button states
-// ─────────────────────────────────────────────────────────────────────────────
+
+
+
 class _ActionChip extends StatelessWidget {
   final Widget child;
   final Color backgroundColor;
@@ -315,9 +315,9 @@ class _ActionChip extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// _ProgressChip — `current/total` pill shown for multi-ad milestones
-// ─────────────────────────────────────────────────────────────────────────────
+
+
+
 class _ProgressChip extends StatelessWidget {
   final int current;
   final int total;

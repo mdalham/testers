@@ -2,29 +2,30 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:testers/screen/Notification/notification_screen.dart';
-import 'package:testers/screen/group_testers/group_main_screen.dart';
-import 'package:testers/screen/installizer/login_screen.dart';
-import 'package:testers/screen/installizer/splash_screen.dart';
-import 'package:testers/screen/open_testers/open_testers.dart';
-import 'package:testers/screen/open_testers/provider/discount_provider.dart';
-import 'package:testers/screen/open_testers/provider/publish_provider.dart';
+import 'package:testers/screen/auth/provider/auth_provider.dart';
+import 'package:testers/screen/notifications/notification_screen.dart';
+import 'package:testers/screen/room/room_main_screen.dart';
+import 'package:testers/screen/auth/login_screen.dart';
+import 'package:testers/screen/auth/splash_screen.dart';
+import 'package:testers/screen/discovery/discovery.dart';
+import 'package:testers/screen/discovery/provider/discount_provider.dart';
+import 'package:testers/screen/discovery/provider/publish_provider.dart';
 import 'package:testers/screen/profile/my_profile.dart';
 import 'package:testers/screen/recharge/recharge_screen.dart';
-import 'package:testers/screen/recharge/service/ads/unity/unity_ads_service.dart';
+import 'package:testers/services/ads/unity_ads_service.dart';
 import 'package:testers/screen/report/report_provider.dart';
-import 'package:testers/screen/setting/setting_screen.dart';
-import 'package:testers/service/provider/auth_provider.dart';
+import 'package:testers/screen/settings/setting_screen.dart';
 import 'package:testers/theme/app_theme.dart';
 import 'package:testers/theme/theme_provider.dart';
-import 'controllers/app_routes.dart';
+import 'package:testers/constants/app_routes.dart';
 
+import 'constants/info.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseFirestore.instance;
-
+  await PublishConstants.load();
   await UnityAdsService.instance.initialize();
 
   runApp(
@@ -59,11 +60,11 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.splash: (_) => const SplashScreen(),
         AppRoutes.login: (_) => const LoginScreen(),
-        AppRoutes.ot: (_) => const OpenTesters(),
+        AppRoutes.discovery: (_) => const Discovery(),
         AppRoutes.settings: (_) => const SettingsScreen(),
         AppRoutes.profile: (_) => const MyProfile(),
         AppRoutes.notification: (_) => const NotificationScreen(),
-        AppRoutes.groupTesters: (_) => const GroupMainScreen(),
+        AppRoutes.room: (_) => const RoomMainScreen(),
         AppRoutes.recharge: (_) => const RechargeScreen(),
       },
     );

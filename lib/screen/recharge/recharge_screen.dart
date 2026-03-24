@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:testers/screen/installizer/animated_drawer.dart';
+import 'package:testers/screen/auth/animated_drawer.dart';
 import 'package:testers/screen/recharge/service/coin_service.dart';
-import '../../controllers/app_routes.dart';
-import '../../service/provider/auth_provider.dart';
-import 'buy_coin_tab.dart';
-import 'get_coin_tab.dart';
+import 'package:testers/constants/app_routes.dart';
+import 'package:testers/screen/auth/provider/auth_provider.dart';
+import 'package:testers/screen/recharge/buy_coin_tab.dart';
+import 'package:testers/screen/recharge/get_coin_tab.dart';
 
 const _orange = Color(0xFFFF9800);
 const _blue   = Color(0xFF1565C0);
 
-// ─────────────────────────────────────────────────────────────────────────────
-// RechargeScreen
-// ─────────────────────────────────────────────────────────────────────────────
+
+
+
 
 class RechargeScreen extends StatelessWidget {
   const RechargeScreen({super.key});
@@ -45,23 +45,23 @@ class _RechargeScreenState extends State<_RechargeView>
   }
 
 
-  //
+  
   Future<void> _onCoinsEarned(int coins) async {
     try {
-      // Step 1 — write to Firestore
+      
       await CoinService.addCoins(coins);
 
-      // Step 2 — refresh local auth/user state so UI updates everywhere
+      
       if (mounted) {
         await context.read<AuthProvider>().refreshUserData();
       }
     } catch (e) {
       debugPrint('RechargeScreen._onCoinsEarned error: $e');
-      // Optionally show an error snackbar here
+      
     }
   }
 
-  // ── Build ──────────────────────────────────────────────────────────────────
+  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -75,7 +75,7 @@ class _RechargeScreenState extends State<_RechargeView>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // ── TabBar ──────────────────────────────────────────────────────────
+          
           TabBar(
             controller: _tabController,
             indicator: const BoxDecoration(
@@ -116,14 +116,14 @@ class _RechargeScreenState extends State<_RechargeView>
 
           const SizedBox(height: 12),
 
-          // ── TabBarView ───────────────────────────────────────────────────────
+          
           Expanded(
             child: TabBarView(
               controller: _tabController,
               children: [
                 const BuyCoinTab(),
 
-                // Pass the async callback — GetCoinTab calls it on auto-claim
+                
                 GetCoinTab(onCoinsEarned: _onCoinsEarned),
               ],
             ),

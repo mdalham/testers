@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
+import 'package:testers/theme/colors.dart';
 
 class AppTheme {
-  AppTheme._(); // Prevent instantiation
+  AppTheme._(); 
 
   static const double _baseBody = 16.0;
   static const double _baseTitle = 16.0;
@@ -29,13 +29,13 @@ class AppTheme {
     );
   }
 
-  //  Light Theme
+  
   static ThemeData light(BuildContext context) => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
     visualDensity: VisualDensity.adaptivePlatformDensity,
 
-    // ── Color Scheme ────────────────────────────
+    
     colorScheme: const ColorScheme.light(
       surface: bgLight,
       onSurface: darkIconBackgroundColor,
@@ -50,10 +50,10 @@ class AppTheme {
 
     scaffoldBackgroundColor: bgLight,
 
-    // ── Icons ────────────────────────────────────
+    
     iconTheme: const IconThemeData(color: fontLight, size: 24),
 
-    // ── Divider ──────────────────────────────────
+    
     dividerColor: outlineLight,
     dividerTheme: const DividerThemeData(
       color: outlineLight,
@@ -61,9 +61,9 @@ class AppTheme {
       space: 1,
     ),
 
-    // ── Text Theme ───────────────────────────────
+    
     textTheme: TextTheme(
-      // -- Display --
+      
       displayLarge: _ts(
         context: context,
         baseSize: 36,
@@ -81,7 +81,7 @@ class AppTheme {
         weight: FontWeight.w700,
         color: fontLight,
       ),
-      // -- Headline --
+      
       headlineLarge: _ts(
         context: context,
         baseSize: _baseHeadline + 8,
@@ -100,7 +100,7 @@ class AppTheme {
         weight: FontWeight.w600,
         color: fontLight,
       ),
-      // -- Title --
+      
       titleLarge: _ts(
         context: context,
         baseSize: _baseTitle + 2,
@@ -118,7 +118,7 @@ class AppTheme {
         baseSize: _baseTitle - 3,
         color: fontLight,
       ),
-      // -- Body --
+      
       bodyLarge: _ts(context: context, baseSize: _baseBody, color: fontLight),
       bodyMedium: _ts(
         context: context,
@@ -130,7 +130,7 @@ class AppTheme {
         baseSize: _baseBody - 4,
         color: subFontLight,
       ),
-      // -- Label --
+      
       labelLarge: _ts(
         context: context,
         baseSize: _baseBody - 2,
@@ -151,13 +151,13 @@ class AppTheme {
   );
 
 
-  //  Dark Theme
+  
   static ThemeData dark(BuildContext context) => ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
     visualDensity: VisualDensity.adaptivePlatformDensity,
 
-    // ── Color Scheme ────────────────────────────
+    
     colorScheme: const ColorScheme.dark(
       surface: bgDark,
       onSurface: lightIconBackgroundColor,
@@ -172,10 +172,10 @@ class AppTheme {
 
     scaffoldBackgroundColor: bgDark,
 
-    // ── Icons ────────────────────────────────────
+    
     iconTheme: const IconThemeData(color: fontDark, size: 24),
 
-    // ── Divider ──────────────────────────────────
+    
     dividerColor: outlineDark,
     dividerTheme: const DividerThemeData(
       color: outlineDark,
@@ -183,9 +183,9 @@ class AppTheme {
       space: 1,
     ),
 
-    // ── Text Theme ───────────────────────────────
+    
     textTheme: TextTheme(
-      // -- Display --
+      
       displayLarge: _ts(
         context: context,
         baseSize: 36,
@@ -203,7 +203,7 @@ class AppTheme {
         weight: FontWeight.w600,
         color: fontDark,
       ),
-      // -- Headline --
+      
       headlineLarge: _ts(
         context: context,
         baseSize: _baseHeadline + 8,
@@ -222,7 +222,7 @@ class AppTheme {
         weight: FontWeight.w600,
         color: fontDark,
       ),
-      // -- Title --
+      
       titleLarge: _ts(
         context: context,
         baseSize: _baseTitle + 2,
@@ -240,7 +240,7 @@ class AppTheme {
         baseSize: _baseTitle - 4,
         color: fontDark,
       ),
-      // -- Body --
+      
       bodyLarge: _ts(context: context, baseSize: _baseBody, color: fontDark),
       bodyMedium: _ts(
         context: context,
@@ -252,7 +252,7 @@ class AppTheme {
         baseSize: _baseBody - 4,
         color: subFontDark,
       ),
-      // -- Label --
+      
       labelLarge: _ts(
         context: context,
         baseSize: _baseBody - 2,

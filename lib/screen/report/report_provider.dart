@@ -3,27 +3,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../service/upload/image_upload.dart';
+import 'package:testers/services/upload/image_upload.dart';
 
 class ReportProvider extends ChangeNotifier {
   ReportProvider._();
   static final ReportProvider instance = ReportProvider._();
 
-  // ── Form state ─────────────────────────────────────────────────────────────
+  
   String?  _selectedProblemType;
   String   _descriptionText  = '';
   String?  _screenshotUrl;
   bool     _isLoading        = false;
   String?  _submitError;
 
-  // ── Screenshot UI state ────────────────────────────────────────────────────
+  
   File?    _screenshotFile;
   bool     _uploadingShot    = false;
   String?  _uploadError;
 
   final _uploadService = ImageUploadService();
 
-  // ── Getters ────────────────────────────────────────────────────────────────
+  
   String?  get selectedProblemType => _selectedProblemType;
   String   get descriptionText     => _descriptionText;
   String?  get screenshotUrl       => _screenshotUrl;
@@ -38,7 +38,7 @@ class ReportProvider extends ChangeNotifier {
           _screenshotUrl != null &&
           _descriptionText.trim().length >= 10;
 
-  // ── Setters ────────────────────────────────────────────────────────────────
+  
 
   void setProblemType(String? type) {
     _selectedProblemType = type;
@@ -50,7 +50,7 @@ class ReportProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ── Screenshot pick + upload ───────────────────────────────────────────────
+  
 
   Future<void> pickAndUploadScreenshot() async {
     try {
@@ -85,13 +85,13 @@ class ReportProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ── 24-hour duplicate check ────────────────────────────────────────────────
-  //
-  // Queries the "report" collection for any document where:
-  //   userId == current user  AND  appId == this app
-  //   AND createdAt >= now - 24 hours
-  //
-  // Returns the existing report's ID if found, null otherwise.
+  
+  
+  
+  
+  
+  
+  
 
   Future<String?> findRecentReport(String appId) async {
     final uid = FirebaseAuth.instance.currentUser?.uid;
@@ -112,8 +112,8 @@ class ReportProvider extends ChangeNotifier {
 
       return snap.docs.isNotEmpty ? snap.docs.first.id : null;
     } on FirebaseException catch (e) {
-      // If the composite index is still being built, allow submission to proceed.
-      // The index URL is printed so it can be created immediately.
+      
+      
       debugPrint('findRecentReport: index missing or Firebase error — ${e.message}');
       return null;
     } catch (e) {
@@ -122,21 +122,21 @@ class ReportProvider extends ChangeNotifier {
     }
   }
 
-  // ── Report ID generation ───────────────────────────────────────────────────
-  //
-  // Format:  yy-ddd-nnn
-  //   yy  = 2-digit year              e.g. "25"
-  //   ddd = day of year, zero-padded  e.g. "089"
-  //   nnn = daily sequence, zero-pad  e.g. "001", "002" ...
-  //
-  // Examples:
-  //   25-089-001  (1st report on day 89 of 2025)
-  //   25-089-002  (2nd report same day)
-  //   25-090-001  (resets to 001 on the next day)
-  //
-  // Counter document:  meta/report_counter  ->  { date: "25-089", seq: 4 }
-  // Both the counter update and the report write happen inside the same
-  // Firestore transaction so the sequence is always atomic.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   String _buildDateKey(DateTime now) {
     final yy  = (now.year % 100).toString().padLeft(2, '0');
@@ -153,7 +153,7 @@ class ReportProvider extends ChangeNotifier {
     final dateKey = _buildDateKey(DateTime.now());
     final snap    = await txn.get(counterRef);
 
-    // ── FIX: explicit cast to Map<String, dynamic> to avoid Object [] error ──
+    
     final data = snap.data() as Map<String, dynamic>?;
 
     int seq = 1;
@@ -168,13 +168,13 @@ class ReportProvider extends ChangeNotifier {
     return '$dateKey-${seq.toString().padLeft(3, '0')}';
   }
 
-  // ── Submit ─────────────────────────────────────────────────────────────────
+  
 
   Future<bool> submitReport({
     required String appId,
     required String appName,
     required String developerName,
-    required String sourceType,   // "open_tester" | "group_tester"
+    required String sourceType,   
   }) async {
     if (!isFormValid) return false;
 
@@ -223,7 +223,7 @@ class ReportProvider extends ChangeNotifier {
     }
   }
 
-  // ── Reset ──────────────────────────────────────────────────────────────────
+  
 
   void _reset() {
     _selectedProblemType = null;

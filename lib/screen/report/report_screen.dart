@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:testers/controllers/height_width.dart';
+import 'package:testers/utils/height_width.dart';
 import 'package:testers/screen/report/report_provider.dart';
-import 'package:testers/widget/test%20field/custom_text_formField.dart';
-import '../../widget/button/custom_buttons.dart';
-import '../../widget/container/screenshot_upload.dart';
-import '../../widget/dialog/confirm_dialog.dart';
-import '../../widget/snackbar/custom_snackbar.dart';
+import 'package:testers/widgets/test%20field/custom_text_formField.dart';
+import 'package:testers/widgets/button/custom_buttons.dart';
+import 'package:testers/widgets/container/screenshot_upload.dart';
+import 'package:testers/widgets/dialog/confirm_dialog.dart';
+import 'package:testers/widgets/snackbar/custom_snackbar.dart';
 
 const _problemTypes = [
   'App Not Found',
@@ -83,7 +83,7 @@ class _ReportScreenState extends State<ReportScreen> {
       return;
     }
 
-    // 24-hour check — may show dialog
+    
     final shouldProceed = await _checkDuplicate();
     if (!shouldProceed || !mounted) return;
 
@@ -288,9 +288,9 @@ class _AppInfoPill extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  Section card wrapper
-// ─────────────────────────────────────────────────────────────────────────────
+
+
+
 
 class _SectionCard extends StatelessWidget {
   const _SectionCard({
@@ -373,9 +373,9 @@ class _SectionCard extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  Problem type dropdown
-// ─────────────────────────────────────────────────────────────────────────────
+
+
+
 
 class _ProblemTypeDropdown extends StatelessWidget {
   const _ProblemTypeDropdown({required this.provider});
