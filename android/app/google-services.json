@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "92539340981",
+    "project_id": "testers-3adf7",
+    "storage_bucket": "testers-3adf7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92539340981:android:850725095b8746228716fc",
+        "android_client_info": {
+          "package_name": "com.thardstudio.testers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92539340981-115kcr073oot6jvmi0997skvqhlbh1o2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thardstudio.testers",
+            "certificate_hash": "f9d02fd95f585ce9ac716489d652f4db0d02a0e5"
+          }
+        },
+        {
+          "client_id": "92539340981-enhb75n9bv7iuremj87ank3o0utnfu5h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thardstudio.testers",
+            "certificate_hash": "f85488ed8bcdb48958aece03df7ae4ce8268abf5"
+          }
+        },
+        {
+          "client_id": "92539340981-psocrscj5fcav3g0gdak0fuppvpe31rk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrR47swU8uiCsw9EbpZDK7Oo7zCJQDzXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92539340981-psocrscj5fcav3g0gdak0fuppvpe31rk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
